@@ -1,3 +1,6 @@
 *~
 *.git/
 *.directory
+test.cpp
+test.x
+TODO

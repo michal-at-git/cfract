@@ -10,12 +10,12 @@ int fract(double numerator, double denominator)
 {
 	if (numerator != denominator)
 	{
-		std::cout << numerator << "/" << denominator; 
+		std::cout << numerator << "/" << denominator << "\n"; 
 	}
 	
 	else
 	{
-		std::cout << 1;
+		std::cout << 1 << "\n";
 	}
   return 0;
 }
@@ -35,12 +35,26 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 
 		if (addition_numerator == addition_denominator)
 		{	
-			std::cout << 1;
+			std::cout << 1 << "\n";
+			
+			if (_FRACT[0]==0)
+			{
+			_FRACT[0] = 1;
+			_FRACT[1] = 1;
+			return  _FRACT; 
+			}
+			else
+			{
+			  _FRACT[2] = 1;
+			_FRACT[3] = 1;
+			  return  (_FRACT)+2; 
+			}
+			
 		}	
 
 		else 
 		{
-			std::cout << addition_numerator << "/" << addition_denominator;
+			std::cout << addition_numerator << "/" << addition_denominator << "\n";
 			
 			if (_FRACT[0]==0)
 			{
@@ -52,7 +66,7 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 			{
 			  _FRACT[2] =  addition_numerator;
 			_FRACT[3] = addition_denominator;
-			  return  (_FRACT)+2; //I'm sure < - it's good! :)
+			  return  (_FRACT)+2; 
 			}
 			
 		}
@@ -66,24 +80,41 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 
 		if (addition_numerator == addition_denominator)
 		{	
-			std::cout << 1;
+			std::cout << 1 << "\n";
+			
+			if (_FRACT[0]==0)
+			{
+			_FRACT[0] = 1;
+			_FRACT[1] = 1;
+			return  _FRACT; 
+			}
+			else
+			{
+			  _FRACT[2] = 1;
+			_FRACT[3] = 1;
+			  return  (_FRACT)+2; 
+			}
+			
+			
+			
+			
 		}	
 
 		else 
 		{
-			std::cout << addition_numerator << "/" << addition_denominator;
+			std::cout << addition_numerator << "/" << addition_denominator << "\n";
 			
 			if (_FRACT[0]==0)
 			{
 			_FRACT[0] = addition_numerator;
 			_FRACT[1] = addition_denominator;
-			return  _FRACT; //I'm sure < - it's good! :)
+			return  _FRACT; 
 			}
 			else
 			{
 			  _FRACT[2] =  addition_numerator;
 			_FRACT[3] = addition_denominator;
-			  return  (_FRACT)+2; //I'm sure < - it's good! :)
+			  return  (_FRACT)+2; 
 			}
 		}
 	}
@@ -95,25 +126,40 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 	else if (denominator_1 == denominator_2)
 	{	if (numerator_1 + numerator_2 != denominator_1)
 		{
-			std::cout << numerator_1 + numerator_2 << "/" << denominator_1;
+			std::cout << numerator_1 + numerator_2 << "/" << denominator_1 << "\n";
 			
 			if (_FRACT[0]==0)
 			{
 			_FRACT[0] = numerator_1 + numerator_2 ;
 			_FRACT[1] = denominator_1;
-			return  _FRACT; //I'm sure < - it's good! :)
+			return  _FRACT; 
 			}
 			else
 			{
 			  _FRACT[2] = numerator_1 + numerator_2 ;
 			_FRACT[3] = denominator_1;
-			  return  (_FRACT)+2; //I'm sure < - it's good! :)
+			  return  (_FRACT)+2; 
 			}
 		}
 		else
 		{
-			std::cout << 1;
-			//return 1;
+			std::cout << 1 << "\n";
+			
+			
+			if (_FRACT[0]==0)
+			{
+			_FRACT[0] = 1;
+			_FRACT[1] = 1;
+			return  _FRACT; 
+			}
+			else
+			{
+			  _FRACT[2] = 1;
+			_FRACT[3] = 1;
+			  return  (_FRACT)+2; 
+			}
+			
+			
 
 		}
 	}
@@ -121,7 +167,7 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 
 }
 
-int addfract(int* fract, int* fract2)
+void addfract(int* fract, int* fract2)
 {
 addfract(*fract, fract[1], *fract2, fract2[1]);
 //return 0; 
@@ -131,14 +177,29 @@ addfract(*fract, fract[1], *fract2, fract2[1]);
 
 
 
-int subtrfract(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
+int* subtrfract(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
 {
 	if (denominator_1 != denominator_2)
 	{
 		
 		double subtraction_numerator =  numerator_1 * denominator_2 - numerator_2 * denominator_1;
 		double subtraction_denominator = denominator_1 * denominator_2;
-		std::cout << subtraction_numerator << "/" << subtraction_denominator;
+		std::cout << subtraction_numerator << "/" << subtraction_denominator << "\n";
+		
+		
+			if (_FRACT[0]==0)
+			{
+			_FRACT[0] = subtraction_numerator;
+			_FRACT[1] = subtraction_denominator;
+			return  _FRACT; 
+			}
+			else
+			{
+			  _FRACT[2] = subtraction_numerator;
+			_FRACT[3] = subtraction_denominator;
+			  return  (_FRACT)+2; 
+			}
+		
 
 	}
 
@@ -147,23 +208,43 @@ int subtrfract(double numerator_1, double denominator_1, double numerator_2, dou
 	{
 		if (numerator_1 != numerator_2 and numerator_1 - numerator_2 != denominator_1)
 		{
-			std::cout << numerator_1-numerator_2 << "/" << denominator_1;
+			std::cout << numerator_1-numerator_2 << "/" << denominator_1 << "\n";
+			
+			if (_FRACT[0]==0)
+			{
+			_FRACT[0] = numerator_1-numerator_2;
+			_FRACT[1] = denominator_1;
+			return  _FRACT; 
+			}
+			else
+			{
+			  _FRACT[2] = numerator_1-numerator_2;
+			_FRACT[3] = denominator_1;
+			  return  (_FRACT)+2; 
+			}
+			
+			
 		}
 	
 		else if (numerator_1 - numerator_2 == denominator_1 and denominator_1 > 0)
 		{
-			std::cout << 1;
+			std::cout << 1 << "\n";
 		}
 
 		else
 		{
-			std::cout << 0;
+			std::cout << 0 << "\n";
 		}
 
 	}
-  return 0;
 	
 }
+
+void subtrfract(int* fract, int* fract2)
+{
+  subtrfract(*fract, fract[1], *fract2, fract[2]);
+}
+
 
 
 
