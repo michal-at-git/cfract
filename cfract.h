@@ -3,7 +3,10 @@
  */
 #include <iostream> 
 
-int fraction(double numerator, double denominator)
+int _FRACT[4] = {0,0,0,0};
+
+
+int fract(double numerator, double denominator)
 {
 	if (numerator != denominator)
 	{
@@ -21,14 +24,15 @@ int fraction(double numerator, double denominator)
 // ADDITION!!!
 
 
-int addition_fractions(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
+int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
 {
-	if (numerator_1 != numerator_2 and denominator_1 != denominator_2)
+
+
+  if (numerator_1 != numerator_2 and denominator_1 != denominator_2)
 	{
-		
 		double addition_numerator = numerator_1 * denominator_2 + denominator_1 * numerator_2;
 		double addition_denominator = denominator_1 * denominator_2;
-	
+
 		if (addition_numerator == addition_denominator)
 		{	
 			std::cout << 1;
@@ -37,26 +41,97 @@ int addition_fractions(double numerator_1, double denominator_1, double numerato
 		else 
 		{
 			std::cout << addition_numerator << "/" << addition_denominator;
+			
+			if (_FRACT[0]==0)
+			{
+			_FRACT[0] = addition_numerator;
+			_FRACT[1] = addition_denominator;
+			return  _FRACT; //I'm sure < - it's good! :)
+			}
+			else
+			{
+			  _FRACT[2] =  addition_numerator;
+			_FRACT[3] = addition_denominator;
+			  return  (_FRACT)+2; //I'm sure < - it's good! :)
+			}
+			
 		}
 	}
+	
+	
+	else if (numerator_1 == numerator_2 and denominator_1 != denominator_2)
+	{
+		double addition_numerator = numerator_1 * denominator_2 + denominator_1 * numerator_2;
+		double addition_denominator = denominator_1 * denominator_2;
+
+		if (addition_numerator == addition_denominator)
+		{	
+			std::cout << 1;
+		}	
+
+		else 
+		{
+			std::cout << addition_numerator << "/" << addition_denominator;
+			
+			if (_FRACT[0]==0)
+			{
+			_FRACT[0] = addition_numerator;
+			_FRACT[1] = addition_denominator;
+			return  _FRACT; //I'm sure < - it's good! :)
+			}
+			else
+			{
+			  _FRACT[2] =  addition_numerator;
+			_FRACT[3] = addition_denominator;
+			  return  (_FRACT)+2; //I'm sure < - it's good! :)
+			}
+		}
+	}
+  
+  
+  
+  
 	//WSPÓLNE MIANOWNIKI
 	else if (denominator_1 == denominator_2)
 	{	if (numerator_1 + numerator_2 != denominator_1)
 		{
 			std::cout << numerator_1 + numerator_2 << "/" << denominator_1;
+			
+			if (_FRACT[0]==0)
+			{
+			_FRACT[0] = numerator_1 + numerator_2 ;
+			_FRACT[1] = denominator_1;
+			return  _FRACT; //I'm sure < - it's good! :)
+			}
+			else
+			{
+			  _FRACT[2] = numerator_1 + numerator_2 ;
+			_FRACT[3] = denominator_1;
+			  return  (_FRACT)+2; //I'm sure < - it's good! :)
+			}
 		}
 		else
 		{
 			std::cout << 1;
+			//return 1;
 
 		}
 	}
 	
-return 0;
 
 }
 
-int subtraction_fractions(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
+int addfract(int* fract, int* fract2)
+{
+addfract(*fract, fract[1], *fract2, fract2[1]);
+//return 0; 
+}
+
+
+
+
+
+int subtrfract(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
 {
 	if (denominator_1 != denominator_2)
 	{
@@ -93,7 +168,7 @@ int subtraction_fractions(double numerator_1, double denominator_1, double numer
 
 
 //multiplication of fractions 
-int multiplication_fractions(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
+int multiplfract(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
 {
 	if (numerator_1 == denominator_1 and numerator_2 != denominator_2)
 	{
@@ -128,7 +203,7 @@ int multiplication_fractions(double numerator_1, double denominator_1, double nu
 
 //division of fractions
 
-int division_fractions(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
+int divfract(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
 {
 	double division_numerator = numerator_1 * denominator_2;
 	double division_denominator = denominator_1 * numerator_2;
@@ -136,5 +211,4 @@ int division_fractions(double numerator_1, double denominator_1, double numerato
   return 0;
 
 }
-
 
