@@ -1,9 +1,43 @@
+#ifndef CFRACT_H
+#define CFRACT_H
 /*Use this, copy and modify under GPLv3 :)
  * 
  */
 #include <iostream> 
 
 int _FRACT[4] = {0,0,0,0};
+int * _CFADR;
+
+void _CFMEM(int num, int den)
+{			
+			 _FRACT[0]=_FRACT[1]=_FRACT[2]=_FRACT[3] = 0;
+
+			if (_FRACT[0]==0 && _FRACT[2]==0)
+			{
+			_FRACT[0] = num;
+			_FRACT[1] = den;
+			  _CFADR =_FRACT; 
+			}
+			else if (_FRACT[0]!=0 && _FRACT[2]==0)
+			{
+			  
+			  _FRACT[2] =  num;
+			_FRACT[3] = den;
+			  _CFADR = (_FRACT)+2; 
+			}
+			else if (_FRACT[0]!=0 && _FRACT[2]!=0)
+			{
+			 _FRACT[0]=_FRACT[1]=_FRACT[2]=_FRACT[3] = 0;
+			_FRACT[0] = num;
+			_FRACT[1] = den;
+			_CFADR = _FRACT; 
+			}
+			else
+			{
+			  std::cout << "memory error\n";
+			}
+			
+}
 
 
 int fract(double numerator, double denominator)
@@ -37,18 +71,8 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		{	
 			std::cout << 1 << "\n";
 			
-			if (_FRACT[0]==0)
-			{
-			_FRACT[0] = 1;
-			_FRACT[1] = 1;
-			return  _FRACT; 
-			}
-			else
-			{
-			  _FRACT[2] = 1;
-			_FRACT[3] = 1;
-			  return  (_FRACT)+2; 
-			}
+			_CFMEM(1, 1);
+			return _CFADR;
 			
 		}	
 
@@ -56,18 +80,8 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		{
 			std::cout << addition_numerator << "/" << addition_denominator << "\n";
 			
-			if (_FRACT[0]==0)
-			{
-			_FRACT[0] = addition_numerator;
-			_FRACT[1] = addition_denominator;
-			return  _FRACT; //I'm sure < - it's good! :)
-			}
-			else
-			{
-			  _FRACT[2] =  addition_numerator;
-			_FRACT[3] = addition_denominator;
-			  return  (_FRACT)+2; 
-			}
+			_CFMEM(addition_numerator, addition_denominator);
+			return _CFADR;
 			
 		}
 	}
@@ -81,22 +95,9 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		if (addition_numerator == addition_denominator)
 		{	
 			std::cout << 1 << "\n";
-			
-			if (_FRACT[0]==0)
-			{
-			_FRACT[0] = 1;
-			_FRACT[1] = 1;
-			return  _FRACT; 
-			}
-			else
-			{
-			  _FRACT[2] = 1;
-			_FRACT[3] = 1;
-			  return  (_FRACT)+2; 
-			}
-			
-			
-			
+		
+			_CFMEM(1, 1);
+			return _CFADR;
 			
 		}	
 
@@ -104,18 +105,8 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		{
 			std::cout << addition_numerator << "/" << addition_denominator << "\n";
 			
-			if (_FRACT[0]==0)
-			{
-			_FRACT[0] = addition_numerator;
-			_FRACT[1] = addition_denominator;
-			return  _FRACT; 
-			}
-			else
-			{
-			  _FRACT[2] =  addition_numerator;
-			_FRACT[3] = addition_denominator;
-			  return  (_FRACT)+2; 
-			}
+			_CFMEM(addition_numerator, addition_denominator);
+			return _CFADR;
 		}
 	}
   
@@ -128,37 +119,15 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		{
 			std::cout << numerator_1 + numerator_2 << "/" << denominator_1 << "\n";
 			
-			if (_FRACT[0]==0)
-			{
-			_FRACT[0] = numerator_1 + numerator_2 ;
-			_FRACT[1] = denominator_1;
-			return  _FRACT; 
-			}
-			else
-			{
-			  _FRACT[2] = numerator_1 + numerator_2 ;
-			_FRACT[3] = denominator_1;
-			  return  (_FRACT)+2; 
-			}
+			_CFMEM(numerator_1 + numerator_2, denominator_1);
+			return _CFADR;
+			
 		}
 		else
 		{
 			std::cout << 1 << "\n";
-			
-			
-			if (_FRACT[0]==0)
-			{
-			_FRACT[0] = 1;
-			_FRACT[1] = 1;
-			return  _FRACT; 
-			}
-			else
-			{
-			  _FRACT[2] = 1;
-			_FRACT[3] = 1;
-			  return  (_FRACT)+2; 
-			}
-			
+			_CFMEM(1, 1);
+			return _CFADR;
 			
 
 		}
@@ -169,6 +138,7 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 
 void addfract(int* fract, int* fract2)
 {
+std::cout << *fract << fract[1] << " }{ " << *fract2 << fract2[1] << "\n";
 addfract(*fract, fract[1], *fract2, fract2[1]);
 //return 0; 
 }
@@ -177,7 +147,7 @@ addfract(*fract, fract[1], *fract2, fract2[1]);
 
 
 
-int* subtrfract(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
+int* subfract(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
 {
 	if (denominator_1 != denominator_2)
 	{
@@ -186,19 +156,8 @@ int* subtrfract(double numerator_1, double denominator_1, double numerator_2, do
 		double subtraction_denominator = denominator_1 * denominator_2;
 		std::cout << subtraction_numerator << "/" << subtraction_denominator << "\n";
 		
-		
-			if (_FRACT[0]==0)
-			{
-			_FRACT[0] = subtraction_numerator;
-			_FRACT[1] = subtraction_denominator;
-			return  _FRACT; 
-			}
-			else
-			{
-			  _FRACT[2] = subtraction_numerator;
-			_FRACT[3] = subtraction_denominator;
-			  return  (_FRACT)+2; 
-			}
+			_CFMEM(subtraction_numerator, subtraction_denominator);
+			return _CFADR;
 		
 
 	}
@@ -210,18 +169,8 @@ int* subtrfract(double numerator_1, double denominator_1, double numerator_2, do
 		{
 			std::cout << numerator_1-numerator_2 << "/" << denominator_1 << "\n";
 			
-			if (_FRACT[0]==0)
-			{
-			_FRACT[0] = numerator_1-numerator_2;
-			_FRACT[1] = denominator_1;
-			return  _FRACT; 
-			}
-			else
-			{
-			  _FRACT[2] = numerator_1-numerator_2;
-			_FRACT[3] = denominator_1;
-			  return  (_FRACT)+2; 
-			}
+			_CFMEM(numerator_1-numerator_2, denominator_1);
+			return _CFADR;
 			
 			
 		}
@@ -229,20 +178,22 @@ int* subtrfract(double numerator_1, double denominator_1, double numerator_2, do
 		else if (numerator_1 - numerator_2 == denominator_1 and denominator_1 > 0)
 		{
 			std::cout << 1 << "\n";
+			_CFMEM(1, 1);
+			return _CFADR;
 		}
 
 		else
-		{
+		{	// do something with this... ;/ hmmm... maybe _CFMEM(0, denominator_1) and update _CFMEM? 
 			std::cout << 0 << "\n";
 		}
 
 	}
-	
+return 0;	
 }
 
-void subtrfract(int* fract, int* fract2)
+void subfract(int* fract, int* fract2)
 {
-  subtrfract(*fract, fract[1], *fract2, fract[2]);
+  subfract(*fract, fract[1], *fract2, fract[2]);
 }
 
 
@@ -275,7 +226,6 @@ int multiplfract(double numerator_1, double denominator_1, double numerator_2, d
 	double multiplication_denominator = denominator_1 * denominator_2;
 	std::cout << multiplication_numerator << "/" << multiplication_denominator;
 	}
-  return 0;
 
 }
 
@@ -293,3 +243,4 @@ int divfract(double numerator_1, double denominator_1, double numerator_2, doubl
 
 }
 
+#endif
