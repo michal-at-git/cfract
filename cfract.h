@@ -1,10 +1,9 @@
 #ifndef CFRACT_H
 #define CFRACT_H
+#include <iostream>
 /*Use this, copy and modify under GPLv3 :)
  * 
  */
-#include <iostream> 
-
 int _FRACT[4] = {0,0,0,0};
 int * _CFADR;
 
@@ -40,7 +39,7 @@ void _CFMEM(int num, int den)
 }
 
 
-int fract(double numerator, double denominator)
+int fract(int numerator, int denominator)
 {
 	if (numerator != denominator)
 	{
@@ -64,8 +63,8 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 
   if (numerator_1 != numerator_2 and denominator_1 != denominator_2)
 	{
-		double addition_numerator = numerator_1 * denominator_2 + denominator_1 * numerator_2;
-		double addition_denominator = denominator_1 * denominator_2;
+		int addition_numerator = numerator_1 * denominator_2 + denominator_1 * numerator_2;
+		int addition_denominator = denominator_1 * denominator_2;
 
 		if (addition_numerator == addition_denominator)
 		{	
@@ -89,8 +88,8 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 	
 	else if (numerator_1 == numerator_2 and denominator_1 != denominator_2)
 	{
-		double addition_numerator = numerator_1 * denominator_2 + denominator_1 * numerator_2;
-		double addition_denominator = denominator_1 * denominator_2;
+		int addition_numerator = numerator_1 * denominator_2 + denominator_1 * numerator_2;
+		int addition_denominator = denominator_1 * denominator_2;
 
 		if (addition_numerator == addition_denominator)
 		{	
@@ -147,13 +146,13 @@ addfract(*fract, fract[1], *fract2, fract2[1]);
 
 
 
-int* subfract(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
+int* subfract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
 {
 	if (denominator_1 != denominator_2)
 	{
 		
-		double subtraction_numerator =  numerator_1 * denominator_2 - numerator_2 * denominator_1;
-		double subtraction_denominator = denominator_1 * denominator_2;
+		int subtraction_numerator =  numerator_1 * denominator_2 - numerator_2 * denominator_1;
+		int subtraction_denominator = denominator_1 * denominator_2;
 		std::cout << subtraction_numerator << "/" << subtraction_denominator << "\n";
 		
 			_CFMEM(subtraction_numerator, subtraction_denominator);
@@ -200,47 +199,66 @@ void subfract(int* fract, int* fract2)
 
 
 //multiplication of fractions 
-int multiplfract(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
+int multifract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
 {
 	if (numerator_1 == denominator_1 and numerator_2 != denominator_2)
 	{
 		std::cout << numerator_2 << "/" << denominator_2;
+		  _CFMEM(numerator_2, denominator_2);
+		  return _CFADR;
 	}
 
 
 	else if (numerator_1 != denominator_1 and numerator_2 == denominator_2)
 	{
 		std::cout << numerator_1 << "/" << denominator_1;	
+		_CFMEM(numerator_1, denominator_1);
+		return _CFADR;
 	}
 
 
 	else if (numerator_1 == numerator_1 and numerator_2 == denominator_2)
 	{
 		std::cout << "1";
+	      _CFMEM(1, 1);
+	      return _CFADR;
 	}
 
 
 	else
 	{
-	double multiplication_numerator = numerator_1 * numerator_2;
-	double multiplication_denominator = denominator_1 * denominator_2;
+	int multiplication_numerator = numerator_1 * numerator_2;
+	int multiplication_denominator = denominator_1 * denominator_2;
 	std::cout << multiplication_numerator << "/" << multiplication_denominator;
+	_CFMEM(multiplication_numerator, multiplication_denominator);
+	return _CFADR;
 	}
 
 }
 
 
 
+void multifract(int* fract, int* fract2)
+{
+  multifract(*fract, fract[1], *fract2, fract2[1] );
+}
+
 
 //division of fractions
 
-int divfract(double numerator_1, double denominator_1, double numerator_2, double denominator_2)
+int divfract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
 {
-	double division_numerator = numerator_1 * denominator_2;
-	double division_denominator = denominator_1 * numerator_2;
+	int division_numerator = numerator_1 * denominator_2;
+	int division_denominator = denominator_1 * numerator_2;
 	std::cout << division_numerator << "/" << division_denominator;
-  return 0;
+  _CFMEM(division_numerator, division_denominator);
+  return _CFADR;
 
+}
+
+void divfract (int* fract, int* fract2)
+{
+  divfract (*fract, fract[1], *fract2, fract[1]);
 }
 
 #endif
