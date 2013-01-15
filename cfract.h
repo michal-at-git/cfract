@@ -4,29 +4,41 @@
 /*Use this, copy and modify under GPLv3 :)
  * 
  */
-int _FRACT[4] = {0,0,0,0};
+int _FRACT[6] = {0,0,0,0};
 int * _CFADR;
 
 void _CFMEM(int num, int den)
-{			
-			 _FRACT[0]=_FRACT[1]=_FRACT[2]=_FRACT[3] = 0;
-
-			if (_FRACT[0]==0 && _FRACT[2]==0)
+{	
+  
+		
+			if (_FRACT[0]==0 && _FRACT[2]==0 && _FRACT[4]==0 )
 			{
 			_FRACT[0] = num;
 			_FRACT[1] = den;
 			  _CFADR =_FRACT; 
 			}
-			else if (_FRACT[0]!=0 && _FRACT[2]==0)
+			else if (_FRACT[0]!=0 && _FRACT[2]==0 && _FRACT[4]==0 )
 			{
 			  
 			  _FRACT[2] =  num;
 			_FRACT[3] = den;
 			  _CFADR = (_FRACT)+2; 
 			}
-			else if (_FRACT[0]!=0 && _FRACT[2]!=0)
+			else if (_FRACT[0]!=0 && _FRACT[2]!=0 && _FRACT[4]==0 )
 			{
-			 _FRACT[0]=_FRACT[1]=_FRACT[2]=_FRACT[3] = 0;
+			  
+			_FRACT[4] = num;
+			_FRACT[5] = den;
+			  _CFADR = (_FRACT)+4; 
+			}
+			else if (_FRACT[0]!=0 && _FRACT[2]!=0 && _FRACT[4]!=0 )
+			{
+			 _FRACT[0]=0;
+			 _FRACT[1]=0;
+			 _FRACT[2]=0;
+			 _FRACT[3]=0;
+			 _FRACT[4]=0;
+			 _FRACT[5]=0;
 			_FRACT[0] = num;
 			_FRACT[1] = den;
 			_CFADR = _FRACT; 
@@ -34,7 +46,8 @@ void _CFMEM(int num, int den)
 			else
 			{
 			  std::cout << "memory error\n";
-			}
+			} 
+			
 			
 }
 
@@ -71,7 +84,7 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 			std::cout << 1 << "\n";
 			
 			_CFMEM(1, 1);
-			return _CFADR;
+			//return _CFADR;
 			
 		}	
 
@@ -80,7 +93,7 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 			std::cout << addition_numerator << "/" << addition_denominator << "\n";
 			
 			_CFMEM(addition_numerator, addition_denominator);
-			return _CFADR;
+			//return _CFADR;
 			
 		}
 	}
@@ -96,7 +109,7 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 			std::cout << 1 << "\n";
 		
 			_CFMEM(1, 1);
-			return _CFADR;
+			//return _CFADR;
 			
 		}	
 
@@ -105,7 +118,7 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 			std::cout << addition_numerator << "/" << addition_denominator << "\n";
 			
 			_CFMEM(addition_numerator, addition_denominator);
-			return _CFADR;
+			//return _CFADR;
 		}
 	}
   
@@ -119,25 +132,25 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 			std::cout << numerator_1 + numerator_2 << "/" << denominator_1 << "\n";
 			
 			_CFMEM(numerator_1 + numerator_2, denominator_1);
-			return _CFADR;
+			//return _CFADR;
 			
 		}
 		else
 		{
 			std::cout << 1 << "\n";
 			_CFMEM(1, 1);
-			return _CFADR;
+			//return _CFADR;
 			
 
 		}
 	}
 	
-
+return _CFADR;
 }
 
 void addfract(int* fract, int* fract2)
 {
-std::cout << *fract << fract[1] << " }{ " << *fract2 << fract2[1] << "\n";
+//std::cout << *fract << fract[1] << " }{ " << *fract2 << fract2[1] << "\n";
 addfract(*fract, fract[1], *fract2, fract2[1]);
 //return 0; 
 }
@@ -156,7 +169,7 @@ int* subfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		std::cout << subtraction_numerator << "/" << subtraction_denominator << "\n";
 		
 			_CFMEM(subtraction_numerator, subtraction_denominator);
-			return _CFADR;
+			//return _CFADR;
 		
 
 	}
@@ -169,7 +182,7 @@ int* subfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 			std::cout << numerator_1-numerator_2 << "/" << denominator_1 << "\n";
 			
 			_CFMEM(numerator_1-numerator_2, denominator_1);
-			return _CFADR;
+			//return _CFADR;
 			
 			
 		}
@@ -178,7 +191,7 @@ int* subfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		{
 			std::cout << 1 << "\n";
 			_CFMEM(1, 1);
-			return _CFADR;
+			//return _CFADR;
 		}
 
 		else
@@ -187,7 +200,9 @@ int* subfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		}
 
 	}
-return 0;	
+
+return _CFADR;
+
 }
 
 void subfract(int* fract, int* fract2)
@@ -199,13 +214,13 @@ void subfract(int* fract, int* fract2)
 
 
 //multiplication of fractions 
-int multifract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
+int* multifract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
 {
 	if (numerator_1 == denominator_1 and numerator_2 != denominator_2)
 	{
 		std::cout << numerator_2 << "/" << denominator_2;
 		  _CFMEM(numerator_2, denominator_2);
-		  return _CFADR;
+		  //return _CFADR;
 	}
 
 
@@ -213,7 +228,7 @@ int multifract(int numerator_1, int denominator_1, int numerator_2, int denomina
 	{
 		std::cout << numerator_1 << "/" << denominator_1;	
 		_CFMEM(numerator_1, denominator_1);
-		return _CFADR;
+		//return _CFADR;
 	}
 
 
@@ -221,7 +236,7 @@ int multifract(int numerator_1, int denominator_1, int numerator_2, int denomina
 	{
 		std::cout << "1";
 	      _CFMEM(1, 1);
-	      return _CFADR;
+	     // return _CFADR;
 	}
 
 
@@ -231,9 +246,12 @@ int multifract(int numerator_1, int denominator_1, int numerator_2, int denomina
 	int multiplication_denominator = denominator_1 * denominator_2;
 	std::cout << multiplication_numerator << "/" << multiplication_denominator;
 	_CFMEM(multiplication_numerator, multiplication_denominator);
-	return _CFADR;
+	//return _CFADR;
 	}
 
+	
+return _CFADR;
+	
 }
 
 
@@ -246,7 +264,7 @@ void multifract(int* fract, int* fract2)
 
 //division of fractions
 
-int divfract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
+int* divfract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
 {
 	int division_numerator = numerator_1 * denominator_2;
 	int division_denominator = denominator_1 * numerator_2;
