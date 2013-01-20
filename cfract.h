@@ -7,10 +7,11 @@
  */
 int _FRACT[6] = {0,0,0,0};
 int * _CFADR;
+
+extern void _CFMEM(int num, int den)
+{
 int euk = 0;
 
-void _CFMEM(int num, int den)
-{
 if (num > 1 && den > 1 && num != den) 
 	{
 	  //std::cout << "SC>in:"<< num << "|" << den << "\n";
@@ -58,8 +59,15 @@ if (num > 1 && den > 1 && num != den)
 			{
 			  std::cout << "memory error\n";
 			} 
-			std::cout << "\n" << num << "\n-\n" << den << "\n";
-			
+			/* new display method */
+			if (num == den) 
+			{
+			  std::cout << "1\n";
+			}
+			else 
+			{
+			  std::cout << "\n" << num << "\n-\n" << den << "\n";
+			}
 }
 
 
@@ -91,18 +99,14 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		int addition_denominator = denominator_1 * denominator_2;
 
 		if (addition_numerator == addition_denominator)
-		{	
-			std::cout << 1 << "\n";
-			
+		{	//fract = 1
 			_CFMEM(1, 1);
-			
+		
 		}	
 
 		else 
 		{
-			std::cout << addition_numerator << "/" << addition_denominator << "\n";
-
-			_CFMEM(addition_numerator, addition_denominator);			
+		    _CFMEM(addition_numerator, addition_denominator);			
 		}
 	}
 	
@@ -113,16 +117,12 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		int addition_denominator = denominator_1 * denominator_2;
 
 		if (addition_numerator == addition_denominator)
-		{	
-			std::cout << 1 << "\n";
-		
+		{			
 			_CFMEM(1, 1);	
 		}	
 
 		else 
 		{
-			std::cout << addition_numerator << "/" << addition_denominator << "\n";
-			
 			_CFMEM(addition_numerator, addition_denominator);
 		}
 	}
@@ -133,9 +133,7 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 	//WSPÓLNE MIANOWNIKI
 	else if (denominator_1 == denominator_2)
 	{	if (numerator_1 + numerator_2 != denominator_1)
-		{
-			std::cout << numerator_1 + numerator_2 << "/" << denominator_1 << "\n";
-			
+		{			
 			_CFMEM(numerator_1 + numerator_2, denominator_1);
 			
 		}
@@ -166,7 +164,6 @@ int* subfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		
 		int subtraction_numerator =  numerator_1 * denominator_2 - numerator_2 * denominator_1;
 		int subtraction_denominator = denominator_1 * denominator_2;
-		std::cout << subtraction_numerator << "/" << subtraction_denominator << "\n";
 		
 			_CFMEM(subtraction_numerator, subtraction_denominator);
 		
@@ -177,22 +174,18 @@ int* subfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 	{
 		if (numerator_1 != numerator_2 and numerator_1 - numerator_2 != denominator_1)
 		{
-			std::cout << numerator_1-numerator_2 << "/" << denominator_1 << "\n";
-			
 			_CFMEM(numerator_1-numerator_2, denominator_1);
 			
 		}
 	
 		else if (numerator_1 - numerator_2 == denominator_1 and denominator_1 > 0)
 		{
-			std::cout << 1 << "\n";
 			_CFMEM(1, 1);
 		}
 
 		else
 		{	
 			_CFMEM(0, 1);
-			std::cout << 0 << "\n";
 		}
 
 	}
@@ -214,14 +207,12 @@ int* multifract(int numerator_1, int denominator_1, int numerator_2, int denomin
 {
 	if (numerator_1 == denominator_1 and numerator_2 != denominator_2)
 	{
-		std::cout << numerator_2 << "/" << denominator_2;
 		  _CFMEM(numerator_2, denominator_2);
 	}
 
 
 	else if (numerator_1 != denominator_1 and numerator_2 == denominator_2)
 	{
-		std::cout << numerator_1 << "/" << denominator_1;	
 		_CFMEM(numerator_1, denominator_1);
 	}
 
@@ -234,14 +225,12 @@ int* multifract(int numerator_1, int denominator_1, int numerator_2, int denomin
 
 	else if ((numerator_1 * numerator_2) == 0 || (denominator_1 * denominator_2) == 0 )
 	{
-	  std::cout << "0/1";
 	  _CFMEM(1, 1);
 	}
 	else
 	{
 	int multiplication_numerator = numerator_1 * numerator_2;
 	int multiplication_denominator = denominator_1 * denominator_2;
-	std::cout << multiplication_numerator << "/" << multiplication_denominator;
 	_CFMEM(multiplication_numerator, multiplication_denominator);
 	}
 
@@ -265,9 +254,8 @@ int* divfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 	if (numerator_1 == 0 || numerator_2 == 0 || denominator_1 == 0 || denominator_2 == 0) std::cout << "[WARNING!]: Division by zero!!!\n";
 	int division_numerator = numerator_1 * denominator_2;
 	int division_denominator = denominator_1 * numerator_2;
-	std::cout << division_numerator << "/" << division_denominator;
-  _CFMEM(division_numerator, division_denominator);
-  return _CFADR;
+	_CFMEM(division_numerator, division_denominator);
+	return _CFADR;
 
 }
 
