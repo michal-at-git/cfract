@@ -1,6 +1,7 @@
 *~
 *.git/
 *.directory
+*.archiv
 test.cpp
 test.x
 TODO
