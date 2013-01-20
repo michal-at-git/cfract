@@ -1,16 +1,27 @@
 #ifndef CFRACT_H
 #define CFRACT_H
 #include <iostream>
+#include "gcd.h" //gcd library required: https://github.com/michal-at-git/gcd/blob/master/gcd.h
 /*Use this, copy and modify under GPLv3 :)
  * 
  */
 int _FRACT[6] = {0,0,0,0};
 int * _CFADR;
+int euk = 0;
 
 void _CFMEM(int num, int den)
-{	
-  
-		
+{
+if (num > 1 && den > 1 && num != den) 
+	{
+	  //std::cout << "SC>in:"<< num << "|" << den << "\n";
+	euk = gcd(num, den);	 
+	//std::cout << "SC>out:"<< num << "|" << den << "\n";
+	  num /= euk;
+	  den /= euk;
+	 
+	
+	}
+			
 			if (_FRACT[0]==0 && _FRACT[1]==0 && _FRACT[2]==0 &&  _FRACT[3]==0 && _FRACT[4]==0 && _FRACT[5]==0)
 			{
 			_FRACT[0] = num;
@@ -47,7 +58,7 @@ void _CFMEM(int num, int den)
 			{
 			  std::cout << "memory error\n";
 			} 
-			
+			std::cout << "\n" << num << "\n-\n" << den << "\n";
 			
 }
 
@@ -90,7 +101,7 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		else 
 		{
 			std::cout << addition_numerator << "/" << addition_denominator << "\n";
-			
+
 			_CFMEM(addition_numerator, addition_denominator);			
 		}
 	}

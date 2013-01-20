@@ -2,6 +2,7 @@
 *.git/
 *.directory
 *.archiv
+gcd.h
 test.cpp
 test.x
 TODO
