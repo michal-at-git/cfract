@@ -5,10 +5,10 @@
 /*Use this, copy and modify under GPLv3 :)
  * 
  */
-int _FRACT[6] = {0,0,0,0};
+int _FRACT[6] = {0,0,0,0,0};
 int * _CFADR;
 
-extern void _CFMEM(int num, int den)
+void _CFMEM(int num, int den)
 {
 int euk = 0;
 
@@ -71,18 +71,30 @@ if (num > 1 && den > 1 && num != den)
 }
 
 
-int fract(int numerator, int denominator)
+int* fract(int numerator, int denominator)
 {
+  int singlfract[2];
 	if (numerator != denominator)
 	{
 		std::cout << numerator << "/" << denominator << "\n"; 
+		singlfract[0] = numerator;
+		singlfract[1] = denominator;
 	}
 	
 	else
 	{
 		std::cout << 1 << "\n";
+		singlfract[0] = 1;
+		singlfract[1] = 1;
 	}
-  return 0;
+	
+	_CFADR = singlfract;
+  return _CFADR;
+}
+
+void fract(int* fraction)
+{
+  fract(*fraction, fraction[1]);
 }
 
 
@@ -139,7 +151,6 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		}
 		else
 		{
-			std::cout << 1 << "\n";
 			_CFMEM(1, 1);
 		}
 	}
@@ -219,7 +230,6 @@ int* multifract(int numerator_1, int denominator_1, int numerator_2, int denomin
 
 	else if (numerator_1 == numerator_1 and numerator_2 == denominator_2)
 	{
-		std::cout << "1";
 	      _CFMEM(1, 1);
 	}
 
@@ -259,9 +269,9 @@ int* divfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 
 }
 
-void divfract (int* fract, int* fract2)
+void divfract(int* fract, int* fract2)
 {
-  divfract (*fract, fract[1], *fract2, fract[1]);
+  divfract(*fract, fract[1], *fract2, fract[1]);
 }
 
 #endif
