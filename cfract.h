@@ -12,62 +12,60 @@ void _CFMEM(int num, int den)
 {
 int euk = 0;
 
-if (num > 1 && den > 1 && num != den) 
+	if (num > 1 && den > 1 && num != den) 
 	{
 	  //std::cout << "SC>in:"<< num << "|" << den << "\n";
 	euk = gcd(num, den);	 
 	//std::cout << "SC>out:"<< num << "|" << den << "\n";
 	  num /= euk;
 	  den /= euk;
-	 
-	
 	}
-			
-			if (_FRACT[0]==0 && _FRACT[1]==0 && _FRACT[2]==0 &&  _FRACT[3]==0 && _FRACT[4]==0 && _FRACT[5]==0)
-			{
-			_FRACT[0] = num;
-			_FRACT[1] = den;
-			  _CFADR =_FRACT; 
-			}
-			else if ( (_FRACT[0]!=0 && _FRACT[1]!=0) && _FRACT[2]==0 &&  _FRACT[3]==0 && _FRACT[4]==0 && _FRACT[5]==0 /*_FRACT[0]!=0 && _FRACT[2]==0 && _FRACT[4]==0*/ )
-			{
+		
+		
+	if (_FRACT[0]==0 && _FRACT[1]==0 && _FRACT[2]==0 &&  _FRACT[3]==0 && _FRACT[4]==0 && _FRACT[5]==0)
+	{
+	_FRACT[0] = num;
+	_FRACT[1] = den;
+	  _CFADR =_FRACT; 
+	}
+	else if ( (_FRACT[0]!=0 && _FRACT[1]!=0) && _FRACT[2]==0 &&  _FRACT[3]==0 && _FRACT[4]==0 && _FRACT[5]==0 /*_FRACT[0]!=0 && _FRACT[2]==0 && _FRACT[4]==0*/ )
+	{
 			  
-			  _FRACT[2] =  num;
-			_FRACT[3] = den;
-			  _CFADR = (_FRACT)+2; 
-			}
-			else if ((_FRACT[0]!=0 && _FRACT[1]!=0) && (_FRACT[2] != 0 &&  _FRACT[3] !=0) && _FRACT[4]==0 && _FRACT[5]==0 /*_FRACT[0]!=0 && _FRACT[2]!=0 && _FRACT[4]==0 */)
-			{
-			  
-			_FRACT[4] = num;
-			_FRACT[5] = den;
-			  _CFADR = (_FRACT)+4; 
-			}
-			else if ((_FRACT[0]!=0 && _FRACT[1]!=0) && (_FRACT[2] != 0 &&  _FRACT[3] !=0) && (_FRACT[4]!=0 && _FRACT[5]!=0) /*_FRACT[0]!=0 && _FRACT[2]!=0 && _FRACT[4]!=0*/ )
-			{
-			 _FRACT[0]=0;
-			 _FRACT[1]=0;
-			 _FRACT[2]=0;
-			 _FRACT[3]=0;
-			 _FRACT[4]=0;
-			 _FRACT[5]=0;
-			_FRACT[0] = num;
-			_FRACT[1] = den;
-			_CFADR = _FRACT; 
-			}
-			else
-			{
-			  std::cout << "memory error\n";
-			} 
-			/* new display method */
-			if (num == den) 
-			{
-			  std::cout << "1\n";
-			}
-			else 
-			{
-			  std::cout << "\n" << num << "\n-\n" << den << "\n";
-			}
+	_FRACT[2] =  num;
+	_FRACT[3] = den;
+	_CFADR = (_FRACT)+2; 
+	}
+	else if ((_FRACT[0]!=0 && _FRACT[1]!=0) && (_FRACT[2] != 0 &&  _FRACT[3] !=0) && _FRACT[4]==0 && _FRACT[5]==0 /*_FRACT[0]!=0 && _FRACT[2]!=0 && _FRACT[4]==0 */)
+	{	  
+	_FRACT[4] = num;
+	_FRACT[5] = den;
+	_CFADR = (_FRACT)+4; 
+	}
+	else if ((_FRACT[0]!=0 && _FRACT[1]!=0) && (_FRACT[2] != 0 &&  _FRACT[3] !=0) && (_FRACT[4]!=0 && _FRACT[5]!=0) /*_FRACT[0]!=0 && _FRACT[2]!=0 && _FRACT[4]!=0*/ )
+	{
+	_FRACT[0]=0;
+	_FRACT[1]=0;
+	_FRACT[2]=0;
+	_FRACT[3]=0;
+	_FRACT[4]=0;
+	_FRACT[5]=0;
+	_FRACT[0] = num;
+	_FRACT[1] = den;
+	_CFADR = _FRACT; 
+	}
+	else
+	{
+	std::cout << "memory error\n";
+	} 
+	/* new display method */
+	if (num == den) 
+	{
+	std::cout << "1\n";
+	}
+	else 
+	{
+	std::cout << "\n" << num << "\n-\n" << den << "\n";
+	}
 }
 
 
@@ -97,9 +95,7 @@ void fract(int* fraction)
   fract(*fraction, fraction[1]);
 }
 
-
 // ADDITION!!!
-
 
 int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
 {
@@ -122,14 +118,13 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 		}
 	}
 	
-	
 	else if (numerator_1 == numerator_2 and denominator_1 != denominator_2)
 	{
 		int addition_numerator = numerator_1 * denominator_2 + denominator_1 * numerator_2;
 		int addition_denominator = denominator_1 * denominator_2;
 
 		if (addition_numerator == addition_denominator)
-		{			
+		{
 			_CFMEM(1, 1);	
 		}	
 
@@ -160,7 +155,6 @@ return _CFADR;
 
 void addfract(int* fract, int* fract2)
 {
-//std::cout << *fract << fract[1] << " }{ " << *fract2 << fract2[1] << "\n";
 addfract(*fract, fract[1], *fract2, fract2[1]);
 }
 
@@ -285,11 +279,30 @@ int* divfract(int num1, int den1, int num2, int den2)
 	  div_den = den1 * den2;
 	  _CFMEM(div_num, div_den);
 	}
+	return _CFADR;
 }
 
 void divfract(int* fract, int* fract2)
 {
   divfract(*fract, fract[1], *fract2, fract2[1]);
 }
-
+//TEMPORARY FUNCTION NAME!!!
+double frtodec(int numerator, int denominator) 
+{
+  double num = (double) numerator;
+  double den = (double) denominator;
+  double dec = num / den;
+  std::cout << dec << "\n";
+ 
+  
+  return dec;
+}
+//TEMPORARY FUNCTION NAME!!!
+void dectofr(double decimal)
+{
+  int tofract = (int) decimal;
+  int denominator = (int) 1 / (decimal - (double) tofract);
+  int numerator = 1 + denominator * tofract;
+  fract( numerator, denominator);
+}
 #endif
