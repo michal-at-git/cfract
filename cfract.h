@@ -285,11 +285,6 @@ int* divfract(int num1, int den1, int num2, int den2)
 	  div_den = den1 * den2;
 	  _CFMEM(div_num, div_den);
 	}
-	
-// 	int division_numerator = numerator_1 * denominator_2;
-// 	int division_denominator = denominator_1 * numerator_2;
-	return _CFADR;
-
 }
 
 void divfract(int* fract, int* fract2)
