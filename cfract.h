@@ -207,7 +207,7 @@ return _CFADR;
 
 void subfract(int* fract, int* fract2)
 {
-  subfract(*fract, fract[1], *fract2, fract[2]);
+  subfract(*fract, fract[1], *fract2, fract2[2]);
 }
 
 
@@ -259,19 +259,42 @@ void multifract(int* fract, int* fract2)
 
 //division of fractions
 
-int* divfract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
+int* divfract(int num1, int den1, int num2, int den2)
 {
-	if (numerator_1 == 0 || numerator_2 == 0 || denominator_1 == 0 || denominator_2 == 0) std::cout << "[WARNING!]: Division by zero!!!\n";
-	int division_numerator = numerator_1 * denominator_2;
-	int division_denominator = denominator_1 * numerator_2;
-	_CFMEM(division_numerator, division_denominator);
+	int div_num;
+	int div_den;
+	
+	if (num1 != num2 && den1 == den2)
+	{
+	 div_num = num1/num2;
+	 div_den = den1;
+	 _CFMEM(div_num, div_den);
+	}
+	else if (num1 == num2 && den1 == den2) 
+	{
+	  _CFMEM(1,1);
+	}
+	else if (num1 == 0 || num2 == 0 || den1 == 0 || den2 == 0) 
+	{
+	  std::cout << "[WARNING!]: Division by zero!!!\n";
+	  _CFMEM(0,1);
+	}
+	else
+	{
+	  div_num = (num1 * den2) / (num2 * den1);
+	  div_den = den1 * den2;
+	  _CFMEM(div_num, div_den);
+	}
+	
+// 	int division_numerator = numerator_1 * denominator_2;
+// 	int division_denominator = denominator_1 * numerator_2;
 	return _CFADR;
 
 }
 
 void divfract(int* fract, int* fract2)
 {
-  divfract(*fract, fract[1], *fract2, fract[1]);
+  divfract(*fract, fract[1], *fract2, fract2[1]);
 }
 
 #endif
