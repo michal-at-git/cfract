@@ -300,36 +300,20 @@ double frtodec(int numerator, int denominator)
 //TEMPORARY FUNCTION NAME!!!
 void dectofr(double decimal)
 {
-  
-  int num = 0, den, i = 1, resgcd;
+ int num = 0;
+  int den, i = 1, resgcd;
   double partden = decimal; //temporary... 
   
-  while (i < 1000)
-  {
-    
-    partden *= 10;
-
-
-    den = i;
-    
-        std::cout << "Decimal: " << decimal << "\n";
-	
-   
+  while (i < 100) // LOW PRECISION WITH DOUBLE UNDER THOUSAND PART ;((((
+  {partden *= 10;
+   den = i;
   i *= 10;
   }
-  num = (int) partden;
-  den = i;
-  resgcd = gcd(num, den);
+ num = (long int) partden;
+ den = i;
+ resgcd = gcd(num, den);
  num = num / resgcd;
  den = den / resgcd;
-std::cout << num << "|" << den << "\n";
-  
-//   int tofract = (int) decimal;
-//   double tonumerator = (decimal - (double) tofract);
-//   int denominator = (int) 1.0 / tonumerator;
-//  std::cout << decimal;
-//   
-//   int numerator = 1 + denominator * tofract;
-//   fract( numerator, denominator);
+fract(num, den);
 }
 #endif
