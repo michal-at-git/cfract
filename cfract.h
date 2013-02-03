@@ -5,7 +5,7 @@
 /*Use this, copy and modify under GPLv3 :)
  * 
  */
-int _FRACT[6] = {0,0,0,0,0};
+int _FRACT[6] = {0,0,0,0,0,0};
 int * _CFADR;
 
 void _CFMEM(int num, int den)
@@ -36,21 +36,23 @@ int euk = 0;
 	_CFADR = (_FRACT)+2; 
 	}
 	else if ((_FRACT[0]!=0 && _FRACT[1]!=0) && (_FRACT[2] != 0 &&  _FRACT[3] !=0) && _FRACT[4]==0 && _FRACT[5]==0 /*_FRACT[0]!=0 && _FRACT[2]!=0 && _FRACT[4]==0 */)
-	{	  
+	{ 
 	_FRACT[4] = num;
 	_FRACT[5] = den;
-	_CFADR = (_FRACT)+4; 
+	
+	_CFADR = (_FRACT)+4;
 	}
 	else if ((_FRACT[0]!=0 && _FRACT[1]!=0) && (_FRACT[2] != 0 &&  _FRACT[3] !=0) && (_FRACT[4]!=0 && _FRACT[5]!=0) /*_FRACT[0]!=0 && _FRACT[2]!=0 && _FRACT[4]!=0*/ )
 	{
-	_FRACT[0]=0;
-	_FRACT[1]=0;
-	_FRACT[2]=0;
-	_FRACT[3]=0;
-	_FRACT[4]=0;
-	_FRACT[5]=0;
-	_FRACT[0] = num;
-	_FRACT[1] = den;
+	_FRACT[0]= 0;
+	_FRACT[1]= 0;
+	_FRACT[2]= 0;
+	_FRACT[3]= 0;
+	_FRACT[5]= 0;
+	_FRACT[4]= 0;
+	_FRACT[5]= 0;
+	_FRACT[0]= num;
+	_FRACT[1]= den;
 	_CFADR = _FRACT; 
 	}
 	else
@@ -58,7 +60,7 @@ int euk = 0;
 	std::cout << "memory error\n";
 	} 
 	/* new display method */
-	if (num == den) 
+	if (num == den && num > 0) 
 	{
 	std::cout << "1\n";
 	}
@@ -66,6 +68,8 @@ int euk = 0;
 	{
 	std::cout << "\n" << num << "\n-\n" << den << "\n";
 	}
+	std::cout << "fract " << "[0: " << _FRACT[0] << "]" << "[1: " << _FRACT[1] << "]" << "[2: " << _FRACT[2] << "]"
+	<< "[3: " << _FRACT[3] << "]" << "[4: " << _FRACT[4] << "]" << "[5: " << _FRACT[5] << "]" << "\n";
 }
 
 
@@ -106,7 +110,7 @@ int* addfract(int num1, int den1, int num2, int den2)
 		int add_num = num1 * den2 + den1 * num2;
 		int add_den = den1 * den2;
 
-		if (add_num == add_den)
+		if (add_num == add_den && add_num > 0)
 		{	//fract = 1
 			_CFMEM(1, 1);
 		
@@ -123,7 +127,7 @@ int* addfract(int num1, int den1, int num2, int den2)
 		int add_num = num1 * den2 + den1 * num2;
 		int add_den = den1 * den2;
 
-		if (add_num == add_den)
+		if (add_num == add_den && add_num > 0)
 		{
 			_CFMEM(1, 1);	
 		}	
@@ -154,8 +158,9 @@ return _CFADR;
 }
 
 void addfract(int* fract, int* fract2)
+
 {
-addfract(*fract, fract[1], *fract2, fract2[1]);
+  if (fract[1] > 0 && fract2[1] >0) addfract(*fract, fract[1], *fract2, fract2[1]);
 }
 
 
@@ -201,7 +206,7 @@ return _CFADR;
 
 void subfract(int* fract, int* fract2)
 {
-  subfract(*fract, fract[1], *fract2, fract2[2]);
+ if (fract[1] > 0 && fract2[1] >0) subfract(*fract, fract[1], *fract2, fract2[2]);
 }
 
 
@@ -247,7 +252,7 @@ return _CFADR;
 
 void multifract(int* fract, int* fract2)
 {
-  multifract(*fract, fract[1], *fract2, fract2[1] );
+ if (fract[1] > 0 && fract2[1] >0) multifract(*fract, fract[1], *fract2, fract2[1] );
 }
 
 
@@ -284,7 +289,7 @@ int* divfract(int num1, int den1, int num2, int den2)
 
 void divfract(int* fract, int* fract2)
 {
-  divfract(*fract, fract[1], *fract2, fract2[1]);
+ if (fract[1] > 0 && fract2[1] >0) divfract(*fract, fract[1], *fract2, fract2[1]);
 }
 //TEMPORARY FUNCTION NAME!!!
 double frtodec(int numerator, int denominator) 
@@ -316,6 +321,4 @@ void dectofr(double decimal)
  den = den / resgcd;
 fract(num, den);
 }
-
-
 #endif
