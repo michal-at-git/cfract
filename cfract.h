@@ -11,13 +11,12 @@ int * _CFADR;
 void _CFMEM(int num, int den)
 {
 int euk = 0;
-
-	if (num > 1 && den > 1 && num != den) 
-	{
-	euk = gcd(num, den);	 
+	  euk = gcd(num, den);	 
+	 if (euk > 1)
+	 {
 	  num /= euk;
 	  den /= euk;
-	}
+	 }
 		
 		
 	if (_FRACT[0]==0 && _FRACT[1]==0 && _FRACT[2]==0 &&  _FRACT[3]==0 && _FRACT[4]==0 && _FRACT[5]==0)
@@ -313,9 +312,13 @@ void dectofr(double decimal)
   }
  num = (int) partden;
  den = i;
+ 
  resgcd = gcd(num, den);
+ if (resgcd >1)
+ {
  num = num / resgcd;
  den = den / resgcd;
+ }
 fract(num, den);
 }
 #endif
