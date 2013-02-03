@@ -97,16 +97,16 @@ void fract(int* fraction)
 
 // ADDITION!!!
 
-int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
+int* addfract(int num1, int den1, int num2, int den2)
 {
 
 
-  if (numerator_1 != numerator_2 and denominator_1 != denominator_2)
+  if (num1 != num2 and den1 != den2)
 	{
-		int addition_numerator = numerator_1 * denominator_2 + denominator_1 * numerator_2;
-		int addition_denominator = denominator_1 * denominator_2;
+		int add_num = num1 * den2 + den1 * num2;
+		int add_den = den1 * den2;
 
-		if (addition_numerator == addition_denominator)
+		if (add_num == add_den)
 		{	//fract = 1
 			_CFMEM(1, 1);
 		
@@ -114,23 +114,23 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
 
 		else 
 		{
-		    _CFMEM(addition_numerator, addition_denominator);			
+		    _CFMEM(add_num, add_den);			
 		}
 	}
 	
-	else if (numerator_1 == numerator_2 and denominator_1 != denominator_2)
+	else if (num1 == num2 and den1 != den2)
 	{
-		int addition_numerator = numerator_1 * denominator_2 + denominator_1 * numerator_2;
-		int addition_denominator = denominator_1 * denominator_2;
+		int add_num = num1 * den2 + den1 * num2;
+		int add_den = den1 * den2;
 
-		if (addition_numerator == addition_denominator)
+		if (add_num == add_den)
 		{
 			_CFMEM(1, 1);	
 		}	
 
 		else 
 		{
-			_CFMEM(addition_numerator, addition_denominator);
+			_CFMEM(add_num, add_den);
 		}
 	}
   
@@ -138,10 +138,10 @@ int* addfract(int numerator_1, int denominator_1, int numerator_2, int denominat
   
   
 	//WSPÓLNE MIANOWNIKI
-	else if (denominator_1 == denominator_2)
-	{	if (numerator_1 + numerator_2 != denominator_1)
+	else if (den1 == den2)
+	{	if (num1 + num2 != den1)
 		{			
-			_CFMEM(numerator_1 + numerator_2, denominator_1);
+			_CFMEM(num1 + num2, den1);
 			
 		}
 		else
@@ -162,28 +162,28 @@ addfract(*fract, fract[1], *fract2, fract2[1]);
 
 
 
-int* subfract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
+int* subfract(int num1, int den1, int num2, int den2)
 {
-	if (denominator_1 != denominator_2)
+	if (den1 != den2)
 	{
 		
-		int subtraction_numerator =  numerator_1 * denominator_2 - numerator_2 * denominator_1;
-		int subtraction_denominator = denominator_1 * denominator_2;
+		int subfract_num =  num1 * den2 - num2 * den1;
+		int subfract_den = den1 * den2;
 		
-			_CFMEM(subtraction_numerator, subtraction_denominator);
+			_CFMEM(subfract_num, subfract_den);
 		
 	}
 
 	
-	else if (denominator_1 == denominator_2)
+	else if (den1 == den2)
 	{
-		if (numerator_1 != numerator_2 and numerator_1 - numerator_2 != denominator_1)
+		if (num1 != num2 and num1 - num2 != den1)
 		{
-			_CFMEM(numerator_1-numerator_2, denominator_1);
+			_CFMEM(num1-num2, den1);
 			
 		}
 	
-		else if (numerator_1 - numerator_2 == denominator_1 and denominator_1 > 0)
+		else if (num1 - num2 == den1 and den1 > 0)
 		{
 			_CFMEM(1, 1);
 		}
@@ -208,34 +208,34 @@ void subfract(int* fract, int* fract2)
 
 
 //multiplication of fractions 
-int* multifract(int numerator_1, int denominator_1, int numerator_2, int denominator_2)
+int* multifract(int num1, int den1, int num2, int den2)
 {
-	if (numerator_1 == denominator_1 and numerator_2 != denominator_2)
+	if (num1 == den1 and num2 != den2)
 	{
-		  _CFMEM(numerator_2, denominator_2);
+		  _CFMEM(num2, den2);
 	}
 
 
-	else if (numerator_1 != denominator_1 and numerator_2 == denominator_2)
+	else if (num1 != den1 and num2 == den2)
 	{
-		_CFMEM(numerator_1, denominator_1);
+		_CFMEM(num1, den1);
 	}
 
 
-	else if (numerator_1 == numerator_1 and numerator_2 == denominator_2)
+	else if (num1 == num1 and num2 == den2)
 	{
 	      _CFMEM(1, 1);
 	}
 
-	else if ((numerator_1 * numerator_2) == 0 || (denominator_1 * denominator_2) == 0 )
+	else if ((num1 * num2) == 0 || (den1 * den2) == 0 )
 	{
 	  _CFMEM(1, 1);
 	}
 	else
 	{
-	int multiplication_numerator = numerator_1 * numerator_2;
-	int multiplication_denominator = denominator_1 * denominator_2;
-	_CFMEM(multiplication_numerator, multiplication_denominator);
+	int multi_num = num1 * num2;
+	int multi_den = den1 * den2;
+	_CFMEM(multi_num, multi_den);
 	}
 
 	
