@@ -14,9 +14,7 @@ int euk = 0;
 
 	if (num > 1 && den > 1 && num != den) 
 	{
-	  //std::cout << "SC>in:"<< num << "|" << den << "\n";
 	euk = gcd(num, den);	 
-	//std::cout << "SC>out:"<< num << "|" << den << "\n";
 	  num /= euk;
 	  den /= euk;
 	}
@@ -48,7 +46,6 @@ int euk = 0;
 	_FRACT[1]= 0;
 	_FRACT[2]= 0;
 	_FRACT[3]= 0;
-	_FRACT[5]= 0;
 	_FRACT[4]= 0;
 	_FRACT[5]= 0;
 	_FRACT[0]= num;
@@ -68,8 +65,8 @@ int euk = 0;
 	{
 	std::cout << "\n" << num << "\n-\n" << den << "\n";
 	}
-	std::cout << "fract " << "[0: " << _FRACT[0] << "]" << "[1: " << _FRACT[1] << "]" << "[2: " << _FRACT[2] << "]"
-	<< "[3: " << _FRACT[3] << "]" << "[4: " << _FRACT[4] << "]" << "[5: " << _FRACT[5] << "]" << "\n";
+// 	std::cout << "fract " << "[0: " << _FRACT[0] << "]" << "[1: " << _FRACT[1] << "]" << "[2: " << _FRACT[2] << "]"
+// 	<< "[3: " << _FRACT[3] << "]" << "[4: " << _FRACT[4] << "]" << "[5: " << _FRACT[5] << "]" << "\n";
 }
 
 
