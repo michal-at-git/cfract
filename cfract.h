@@ -304,16 +304,18 @@ void dectofr(double decimal)
   int den, i = 1, resgcd;
   double partden = decimal; //temporary... 
   
-  while (i < 100) // LOW PRECISION WITH DOUBLE UNDER THOUSAND PART ;((((
+  while (i < 100000) // maximal precision 0.0000x
   {partden *= 10;
    den = i;
   i *= 10;
   }
- num = (long int) partden;
+ num = (int) partden;
  den = i;
  resgcd = gcd(num, den);
  num = num / resgcd;
  den = den / resgcd;
 fract(num, den);
 }
+
+
 #endif
