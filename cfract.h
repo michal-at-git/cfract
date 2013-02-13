@@ -64,8 +64,6 @@ int euk = 0;
 	{
 	std::cout << "\n" << num << "\n-\n" << den << "\n";
 	}
-// 	std::cout << "fract " << "[0: " << _FRACT[0] << "]" << "[1: " << _FRACT[1] << "]" << "[2: " << _FRACT[2] << "]"
-// 	<< "[3: " << _FRACT[3] << "]" << "[4: " << _FRACT[4] << "]" << "[5: " << _FRACT[5] << "]" << "\n";
 }
 
 
@@ -107,9 +105,8 @@ int* addfract(int num1, int den1, int num2, int den2)
 		int add_den = den1 * den2;
 
 		if (add_num == add_den && add_num > 0)
-		{	//fract = 1
+		{	
 			_CFMEM(1, 1);
-		
 		}	
 
 		else 
@@ -134,10 +131,6 @@ int* addfract(int num1, int den1, int num2, int den2)
 		}
 	}
   
-  
-  
-  
-	//WSPÓLNE MIANOWNIKI
 	else if (den1 == den2)
 	{	if (num1 + num2 != den1)
 		{			
@@ -287,7 +280,8 @@ void divfract(int* fract, int* fract2)
 {
  if (fract[1] > 0 && fract2[1] >0) divfract(*fract, fract[1], *fract2, fract2[1]);
 }
-//TEMPORARY FUNCTION NAME!!!
+
+
 double frtodec(int numerator, int denominator) 
 {
   double num = (double) numerator;
@@ -298,19 +292,17 @@ double frtodec(int numerator, int denominator)
   
   return dec;
 }
-//TEMPORARY FUNCTION NAME!!!
+
 void dectofr(double decimal)
 {
  int num = 0;
-  int den, i = 1, resgcd;
-  double partden = decimal; //temporary... 
-  
+  int den, i = 1, resgcd;  
   while (i < 100000) // maximal precision 0.0000x
-  {partden *= 10;
+  {decimal *= 10;
    den = i;
   i *= 10;
   }
- num = (int) partden;
+ num = (int) decimal;
  den = i;
  
  resgcd = gcd(num, den);
