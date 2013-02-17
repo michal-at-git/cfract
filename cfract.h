@@ -17,8 +17,8 @@ int euk = 0;
 	  num /= euk;
 	  den /= euk;
 	 }
-		
-		
+
+
 	if (_FRACT[0]==0 && _FRACT[1]==0 && _FRACT[2]==0 &&  _FRACT[3]==0 && _FRACT[4]==0 && _FRACT[5]==0)
 	{
 	_FRACT[0] = num;
@@ -27,7 +27,7 @@ int euk = 0;
 	}
 	else if ( (_FRACT[0]!=0 && _FRACT[1]!=0) && _FRACT[2]==0 &&  _FRACT[3]==0 && _FRACT[4]==0 && _FRACT[5]==0)
 	{
-			  
+
 	_FRACT[2] =  num;
 	_FRACT[3] = den;
 	_CFADR = (_FRACT)+2; 
@@ -36,7 +36,7 @@ int euk = 0;
 	{ 
 	_FRACT[4] = num;
 	_FRACT[5] = den;
-	
+
 	_CFADR = (_FRACT)+4;
 	}
 	else if ((_FRACT[0]!=0 && _FRACT[1]!=0) && (_FRACT[2] != 0 &&  _FRACT[3] !=0) && (_FRACT[4]!=0 && _FRACT[5]!=0))
@@ -76,14 +76,14 @@ int* fract(int numerator, int denominator)
 		singlfract[0] = numerator;
 		singlfract[1] = denominator;
 	}
-	
+
 	else
 	{
 		std::cout << 1 << "\n";
 		singlfract[0] = 1;
 		singlfract[1] = 1;
 	}
-	
+
 	_CFADR = singlfract;
   return _CFADR;
 }
@@ -114,7 +114,7 @@ int* addfract(int num1, int den1, int num2, int den2)
 		    _CFMEM(add_num, add_den);			
 		}
 	}
-	
+
 	else if (num1 == num2 and den1 != den2)
 	{
 		int add_num = num1 * den2 + den1 * num2;
@@ -135,14 +135,14 @@ int* addfract(int num1, int den1, int num2, int den2)
 	{	if (num1 + num2 != den1)
 		{			
 			_CFMEM(num1 + num2, den1);
-			
+
 		}
 		else
 		{
 			_CFMEM(1, 1);
 		}
 	}
-	
+
 return _CFADR;
 }
 
@@ -160,23 +160,23 @@ int* subfract(int num1, int den1, int num2, int den2)
 {
 	if (den1 != den2)
 	{
-		
+
 		int subfract_num =  num1 * den2 - num2 * den1;
 		int subfract_den = den1 * den2;
-		
+
 			_CFMEM(subfract_num, subfract_den);
-		
+
 	}
 
-	
+
 	else if (den1 == den2)
 	{
 		if (num1 != num2 and num1 - num2 != den1)
 		{
 			_CFMEM(num1-num2, den1);
-			
+
 		}
-	
+
 		else if (num1 - num2 == den1 and den1 > 0)
 		{
 			_CFMEM(1, 1);
@@ -232,9 +232,9 @@ int* multifract(int num1, int den1, int num2, int den2)
 	_CFMEM(multi_num, multi_den);
 	}
 
-	
+
 return _CFADR;
-	
+
 }
 
 
@@ -251,7 +251,7 @@ int* divfract(int num1, int den1, int num2, int den2)
 {
 	int div_num;
 	int div_den;
-	
+
 	if (num1 != num2 && den1 == den2)
 	{
 	 div_num = num1/num2;
@@ -282,6 +282,7 @@ void divfract(int* fract, int* fract2)
 }
 
 
+
 double frtodec(int numerator, int denominator) 
 {
   double num = (double) numerator;
@@ -292,6 +293,11 @@ double frtodec(int numerator, int denominator)
   
   return dec;
 }
+
+void frtodec(int* fract) {
+  frtodec(*fract, fract[1]);
+}
+
 
 void dectofr(double decimal)
 {
