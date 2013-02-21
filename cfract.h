@@ -255,12 +255,21 @@ return _CFADR;
 }
 
 
-
+////////////////////////////////////////////////////////////////////////////////////
 void multifract(int* fract, int* fract2)
 {
  if (fract[1] > 0 && fract2[1] >0) multifract(*fract, fract[1], *fract2, fract2[1] );
 }
 
+void multifract(int frnum, int frden, int* fract2)
+{
+ if (frden > 0 && fract2[1] >0) multifract(frnum, frden, *fract2, fract2[1] ); //temporary frden  - to analyze...
+}
+void multifract(int* fract, int frnum, int frden)
+{
+ if (fract[1] > 0 && frden >0) multifract(*fract, fract[1], frnum, frden ); //temporary if frden > 0 - to analyze...
+}
+////////////////////////////////////////////////////////////////////////////////////
 
 //division of fractions
 
