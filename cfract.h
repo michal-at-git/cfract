@@ -157,12 +157,20 @@ using  cfract::_FRACT;
 return _CFADR;
 }
 
+////////////////////////////////////////////////////////////////////////////
 void addfract(int* fract, int* fract2)
-
 {
   if (fract[1] > 0 && fract2[1] >0) addfract(*fract, fract[1], *fract2, fract2[1]);
 }
-
+void addfract(int frnum, int frden, int* fract2)
+{
+  if (frden > 0 && fract2[1] >0) addfract(frnum, frden, *fract2, fract2[1]);
+}
+void addfract(int* fract, int frnum, int frden)
+{
+  if (frden > 0 && fract[1] >0) addfract(*fract, fract[1], frnum, frden);
+}
+////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -206,12 +214,20 @@ using  cfract::_FRACT;
 return _CFADR;
 
 }
-
+/////////////////////////////////////////////////////////////////////////////////
 void subfract(int* fract, int* fract2)
 {
  if (fract[1] > 0 && fract2[1] >0) subfract(*fract, fract[1], *fract2, fract2[2]);
 }
-
+void subfract(int frnum, int frden, int* fract2)
+{
+ if (frden > 0 && fract2[1] >0) subfract(frnum, frden, *fract2, fract2[2]);
+}
+void subfract(int* fract, int frnum, int frden)
+{
+ if (fract[1] > 0 && frden >0) subfract(*fract, fract[1], frnum, frden);
+}
+/////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -304,10 +320,20 @@ using  cfract::_FRACT;
 	return _CFADR;
 }
 
+///////////////////////////////////////////////////////////////////////////////////
 void divfract(int* fract, int* fract2)
 {
  if (fract[1] > 0 && fract2[1] >0) divfract(*fract, fract[1], *fract2, fract2[1]);
 }
+void divfract(int frnum, int frden, int* fract2)
+{
+ if (frden > 0 && fract2[1] >0) divfract(frnum, frden, *fract2, fract2[1]);
+}
+void divfract(int* fract, int frnum, int frden)
+{
+ if (fract[1] > 0 && frden >0) divfract(*fract, fract[1], frnum, frden);
+}
+///////////////////////////////////////////////////////////////////////////////////
 
 
 
