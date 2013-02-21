@@ -5,11 +5,18 @@
 /*Use this, copy and modify under GPLv3 :)
  * 
  */
+namespace cfract {
 int _FRACT[6] = {0,0,0,0,0,0};
 int * _CFADR;
+}
+
+
 
 void _CFMEM(int num, int den)
 {
+using  cfract::_CFADR;
+using  cfract::_FRACT;
+
 int euk = 0;
 	  euk = gcd(num, den);	 
 	 if (euk > 1)
@@ -69,6 +76,9 @@ int euk = 0;
 
 int* fract(int numerator, int denominator)
 {
+using  cfract::_CFADR;
+using  cfract::_FRACT;
+
   int singlfract[2];
 	if (numerator != denominator)
 	{
@@ -97,7 +107,8 @@ void fract(int* fraction)
 
 int* addfract(int num1, int den1, int num2, int den2)
 {
-
+using  cfract::_CFADR;
+using  cfract::_FRACT;
 
   if (num1 != num2 and den1 != den2)
 	{
@@ -158,6 +169,9 @@ void addfract(int* fract, int* fract2)
 
 int* subfract(int num1, int den1, int num2, int den2)
 {
+using  cfract::_CFADR;
+using  cfract::_FRACT;
+
 	if (den1 != den2)
 	{
 
@@ -204,6 +218,9 @@ void subfract(int* fract, int* fract2)
 //multiplication of fractions 
 int* multifract(int num1, int den1, int num2, int den2)
 {
+using  cfract::_CFADR;
+using  cfract::_FRACT;
+
 	if (num1 == den1 and num2 != den2)
 	{
 		  _CFMEM(num2, den2);
@@ -249,6 +266,8 @@ void multifract(int* fract, int* fract2)
 
 int* divfract(int num1, int den1, int num2, int den2)
 {
+using  cfract::_CFADR;
+using  cfract::_FRACT;
 	int div_num;
 	int div_den;
 
