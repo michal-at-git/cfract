@@ -109,8 +109,6 @@ void fract(int* fraction)
 
 int* addfract(int num1, int den1, int num2, int den2)
 {
-   std::cerr << "step: " << STEP << " ----------------------" << std::endl; /////////////////////////////
-
 using  cfract::_CFADR;
 using  cfract::_FRACT;
 
@@ -157,36 +155,22 @@ using  cfract::_FRACT;
 			_CFMEM(1, 1);
 		}
 	}
-////////////test!!!!!!!!
-  ++STEP;
 return _CFADR;
 }
 
-////////////////////////////////////////////////////////////////////////////
-int* addfract(int* fract, int* fract2)
+void addfract(int* fract, int* fract2)
 { 
   if (fract[1] > 0 && fract2[1] >0) addfract(*fract, fract[1], *fract2, fract2[1]);
 }
-int* addfract(int frnum, int frden, int* fract2)
+void addfract(int frnum, int frden, int* fract2)
 {
   if (frden > 0 && fract2[1] >0) addfract(frnum, frden, *fract2, fract2[1]);
 }
-int* addfract(int* fract, int frnum, int frden)
+void addfract(int* fract, int frnum, int frden)
 {
   if (frden > 0 && fract[1] >0) addfract(*fract, fract[1], frnum, frden);
 }
-////////////TEST
-void addfract(int* adr)
- {
-  std::cout << "[msg]: Only addres!\n";
- }
- int addfract(int one, int two)
- {
- std::cout << "[msg]: Only numbs!\n";
-   std::cout << "[msg]: first = " << one << " second = " << two << std::endl; 
-}
 
-////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -230,7 +214,7 @@ using  cfract::_FRACT;
 return _CFADR;
 
 }
-/////////////////////////////////////////////////////////////////////////////////
+
 void subfract(int* fract, int* fract2)
 {
  if (fract[1] > 0 && fract2[1] >0) subfract(*fract, fract[1], *fract2, fract2[2]);
@@ -243,7 +227,6 @@ void subfract(int* fract, int frnum, int frden)
 {
  if (fract[1] > 0 && frden >0) subfract(*fract, fract[1], frnum, frden);
 }
-/////////////////////////////////////////////////////////////////////////////////
 
 
 
