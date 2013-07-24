@@ -1,5 +1,5 @@
 #include <iostream>
-#include "odlcompat_cfract.hpp"
+//#include "oldcompat_cfract.hpp"  #troubles with names!!!
 
 
 class fract {
@@ -12,8 +12,44 @@ public:
     this -> numerator = num;
     this -> denominator = den;
   }
+  
+  
+  
   fract operator+ (const fract &fr) {
-    return fract(this -> numerator + fr.numerator, this->denominator);
+
+    if(this -> denominator != fr.denominator) {  
+      int res_num = this -> numerator * fr.denominator + fr.numerator * this -> denominator;
+      int res_den = this -> denominator * fr.denominator;
+      
+      if (res_num == res_den) return fract(1, 1);
+      
+      else return fract(res_num,res_den);      
+    }
+    else { //if the same numerators 
+      if(this-> numerator + fr.numerator != this -> denominator )
+	return fract(numerator + fr.numerator, this -> denominator);
+      else return fract(1,1);
+      
+    }
+    
+    /* IT WASNT GOOD IDEA*/
+//     else if(this -> numerator == fr.numerator and this -> denominator != fr.denominator)
+//     {
+//       int res_num = this -> numerator * fr.denominator + fr.numerator * this -> denominator;
+//       int res_den = denominator * fr.denominator;
+//       
+//       if (res_num == res_den && res_num > 0)
+//       {
+// 	return fract(1,1);
+//       }
+//       else return fract(res_num, res_den);
+//     }
+
+
+
+// under construction!!! whats with 0? in denominator or on sum of numerators?
+
+// important: GCD() :)
     
   }
   
