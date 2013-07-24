@@ -1,5 +1,5 @@
-#ifndef CFRACT_H
-#define CFRACT_H
+#ifndef CFRACT_HPP
+#define CFRACT_HPP
 #include <iostream>
 #include "gcd.h" //gcd library required: https://github.com/michal-at-git/gcd/blob/master/gcd.h
 /*Use this, copy and modify under GPLv3 :)
