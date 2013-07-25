@@ -14,7 +14,7 @@ public:
   }
   
   
-  
+//addition  
   fract operator+ (const fract &fr) {
 
     if(this -> denominator != fr.denominator) {  
@@ -27,7 +27,7 @@ public:
     }
     else { //if the same numerators 
       if(this-> numerator + fr.numerator != this -> denominator )
-	return fract(numerator + fr.numerator, this -> denominator);
+	return fract(this -> numerator + fr.numerator, this -> denominator);
       else return fract(1,1);
       
     }
@@ -52,6 +52,29 @@ public:
 // important: GCD() :)
     
   }
+  
+  
+//subtraction
+
+  fract operator- (const fract &fr) {
+    if(this -> denominator != fr.denominator) {  
+      int res_num =  (this -> numerator * fr.denominator)-(fr.numerator * this -> denominator);
+      int res_den = this -> denominator * fr.denominator;
+      
+      if (res_num == res_den) return fract(1, 1);
+      
+      else return fract(res_num,res_den);      
+    }
+    else { //if the same numerators 
+      if(this-> numerator - fr.numerator != this -> denominator )
+	return fract(this -> numerator - fr.numerator, this -> denominator);
+      else return fract(1,1);
+      
+    }
+    
+    
+  }
+  
   
   fract operator= (const fract &fr) {
     return fract(this -> numerator = fr.numerator, this->denominator = fr.denominator);
