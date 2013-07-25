@@ -111,6 +111,9 @@ fract operator* (const fract &fr) {
     }
   } 
   
+fract operator* (const int &fr)  {
+  return fract(this->numerator*fr, this -> denominator);
+}
   
   fract operator= (const fract &fr) {
     return fract(this -> numerator = fr.numerator, this->denominator = fr.denominator);
