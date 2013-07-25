@@ -33,24 +33,11 @@ public:
     }
 
   }
- 
- 
-    /* IT WASNT GOOD IDEA*/
-//     else if(this -> numerator == fr.numerator and this -> denominator != fr.denominator)
-//     {
-//       int res_num = this -> numerator * fr.denominator + fr.numerator * this -> denominator;
-//       int res_den = denominator * fr.denominator;
-//       
-//       if (res_num == res_den && res_num > 0)
-//       {
-// 	return fract(1,1);
-//       }
-//       else return fract(res_num, res_den);
-//     }
-
 
 
 // under construction!!! whats with 0? in denominator or on sum of numerators?
+//[^answ] with zero currently I don't see any problems ;P
+//...but later i'll check it better 
 
 // important: GCD() :)
 
@@ -83,8 +70,7 @@ fract operator+ (const int &fr) {
     else { //if the same numerators 
       if(this-> numerator - fr.numerator != this -> denominator )
 	return fract(this -> numerator - fr.numerator, this -> denominator);
-      else return fract(1,1);
-      
+      else return fract(1,1);      
     }        
   }
   
@@ -99,7 +85,31 @@ fract operator- (const int &fr) {
       
       else return fract(res_num,res_den);      
   }  
+
+fract operator* (const fract &fr) {
   
+  
+  if (this->numerator == this->denominator and fr.numerator != fr.denominator)
+	{
+		
+		  return fract(fr.numerator, fr.denominator);
+	}
+	
+  else if (this->numerator != this->denominator and fr.numerator == fr.denominator) 
+  {
+		  return fract(this->numerator, this->denominator);
+  }
+  
+  else if (this->numerator == this->denominator and fr.numerator == fr.denominator) 
+    return fract(1,1);
+    
+  
+  else {
+    return fract(this->numerator*fr.numerator, 
+		 this->denominator*fr.denominator);
+    
+    }
+  } 
   
   
   fract operator= (const fract &fr) {
@@ -107,14 +117,3 @@ fract operator- (const int &fr) {
     
   }
 };
-
-//control for tests
-// int main()
-// {
-//  fract first(1,10);
-//  fract second(2,10); 
-//  fract third(5,10);
-//  
-//  first = first + second + third;
-//  std::cout << first.numerator << "|" << second.denominator << std::endl;
-// }
