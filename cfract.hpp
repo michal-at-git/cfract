@@ -64,10 +64,10 @@ fract operator+ (const int &fr) {
       if (res_num == res_den) return fract(1, 1);
       
       else return fract(res_num,res_den);      
-   
-
   }
-  
+
+
+    
   
 //subtraction
 
@@ -87,6 +87,18 @@ fract operator+ (const int &fr) {
       
     }        
   }
+  
+
+fract operator- (const int &fr) {
+
+ 
+      int res_num = this -> numerator - fr * this -> denominator;
+      int res_den = this -> denominator;
+      
+      if (res_num == res_den) return fract(1, 1);
+      
+      else return fract(res_num,res_den);      
+  }  
   
   
   
