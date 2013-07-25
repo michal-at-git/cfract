@@ -31,7 +31,10 @@ public:
       else return fract(1,1);
       
     }
-    
+
+  }
+ 
+ 
     /* IT WASNT GOOD IDEA*/
 //     else if(this -> numerator == fr.numerator and this -> denominator != fr.denominator)
 //     {
@@ -50,7 +53,19 @@ public:
 // under construction!!! whats with 0? in denominator or on sum of numerators?
 
 // important: GCD() :)
-    
+
+
+fract operator+ (const int &fr) {
+
+ 
+      int res_num = this -> numerator + fr * this -> denominator;
+      int res_den = this -> denominator;
+      
+      if (res_num == res_den) return fract(1, 1);
+      
+      else return fract(res_num,res_den);      
+   
+
   }
   
   
@@ -70,10 +85,9 @@ public:
 	return fract(this -> numerator - fr.numerator, this -> denominator);
       else return fract(1,1);
       
-    }
-    
-    
+    }        
   }
+  
   
   
   fract operator= (const fract &fr) {
