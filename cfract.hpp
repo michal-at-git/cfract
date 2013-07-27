@@ -1,6 +1,5 @@
 #include <iostream>
-//#include "oldcompat_cfract.hpp"  #troubles with names!!!
-
+#include "gcd.h"
 
 class fract {
   
@@ -23,7 +22,10 @@ public:
       
       if (res_num == res_den) return fract(1, 1);
       
-      else return fract(res_num,res_den);      
+      else {	
+	return fract(res_num/gcd(res_num, res_den),
+	res_den/gcd(res_num, res_den));
+      }
     }
     else { //if the same numerators 
       if(this-> numerator + fr.numerator != this -> denominator )
@@ -65,7 +67,9 @@ fract operator+ (const int &fr) {
       
       if (res_num == res_den) return fract(1, 1);
       
-      else return fract(res_num,res_den);      
+      else return fract(res_num/gcd(res_num, res_den),
+		     res_den/gcd(res_num, res_den));   
+      
     }
     else { //if the same numerators 
       if(this-> numerator - fr.numerator != this -> denominator )
@@ -104,9 +108,10 @@ fract operator* (const fract &fr) {
     return fract(1,1);
     
   
-  else {
-    return fract(this->numerator*fr.numerator, 
-		 this->denominator*fr.denominator);
+  else {int res_num = this->numerator*fr.numerator;
+      int res_den = this->denominator*fr.denominator;
+    return fract(res_num/gcd(res_num, res_den),
+		 res_den/gcd(res_num, res_den));
     
     }
   } 
@@ -142,7 +147,10 @@ fract operator/ (const fract &fr) {
   else{
     int res_num = this->numerator * fr.denominator;
     int res_den = this->denominator * fr.numerator;
-    return fract(res_num, res_den);
+    
+    return fract(res_num/gcd(res_num, res_den),
+		 res_den/gcd(res_num, res_den)
+		);
   }
 }
 
