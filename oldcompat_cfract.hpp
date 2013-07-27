@@ -312,8 +312,8 @@ using  cfract::_FRACT;
 	}
 	else
 	{
-	  div_num = (num1 * den2) / (num2 * den1);
-	  div_den = den1 * den2;
+	  div_num = num1 * den2; 
+	  div_den = den1 * num2;
 	  _CFMEM(div_num, div_den);
 	}
 	return _CFADR;

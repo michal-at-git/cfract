@@ -119,4 +119,33 @@ fract operator* (const int &fr)  {
     return fract(this -> numerator = fr.numerator, this->denominator = fr.denominator);
     
   }
+
+fract operator/ (const fract &fr) {
+  //THERE'S NO PRECISION HERE:
+  if(this->numerator != fr.numerator and this->denominator == fr.denominator
+    and (this->numerator != 0 or fr.numerator != 0 or this->denominator != 0 or fr.denominator != 0)) {
+    return fract(this -> numerator / fr.numerator,this->denominator);
+  }
+  
+  
+  else if (this->numerator == fr.numerator and this->denominator==fr.denominator 
+    and (this->numerator != 0 or fr.numerator != 0 or this->denominator != 0 or fr.denominator != 0)) 
+    return fract(1,1);
+  
+  
+  else if(this->numerator == 0 or fr.numerator == 0 or this->denominator== 0 or fr.denominator == 0) {
+    std::cerr << "[cfract] ERROR: Division by zero!\n";
+    return fract(0,1);
+  }
+  
+  
+  else{
+    int res_num = this->numerator * fr.denominator;
+    int res_den = this->denominator * fr.numerator;
+    return fract(res_num, res_den);
+  }
+}
+
+
+  
 };
