@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include "gcd.h"
 
 class fract {
@@ -11,7 +12,18 @@ public:
     this -> numerator = num;
     this -> denominator = den;
   }
-  
+  fract (double n) {
+    int temp = (int) (n*1000);
+    int i = 3;
+    while(temp%10 == 0 && i >0) 
+    {	
+      temp /= 10;
+       --i;
+    }
+    this->numerator = temp;
+    this->denominator = pow(10,i);
+    
+  }
   
 //addition  
   fract operator+ (const fract &fr) {
