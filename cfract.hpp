@@ -166,6 +166,22 @@ fract operator/ (const fract &fr) {
   }
 }
 
+fract operator/ (const int &fr) {
+    int res_num = 0, res_den = this->denominator;
+    
+    if(fr > 0 && (this -> numerator % fr) == 0 ) res_num = this->numerator / fr;
+    else if (fr > 0 && (this-> numerator % fr) > 0) {
+      res_num = this->numerator;
+      res_den = fr * this->denominator;
+    }
+    else { 
+      std::cerr << "[cfract] ERROR: Division by zero!\n";
+      //numerator defined as before
+    }
+      return fract(res_num/gcd(res_num, res_den),
+		 res_den/gcd(res_num, res_den)
+		);
+  }
 
   
 };
