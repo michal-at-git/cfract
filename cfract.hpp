@@ -20,11 +20,16 @@ public:
       temp /= 10;
        --i;
     }
-    this->numerator = temp;
-    this->denominator = pow(10,i);
-    
+    int num = temp;
+    int den = pow(10,i);
+    this->numerator = num/gcd(num, den);
+    this->denominator = den/gcd(num, den);
   }
   
+  fract(int n) {
+   this->numerator = n;
+   this->denominator = 1;
+  }
 //addition  
   fract operator+ (const fract &fr) {
 
